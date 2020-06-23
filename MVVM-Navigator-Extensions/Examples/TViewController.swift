@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyGif
 import MVVMNavigatorExtensions
 
 class TViewController: UIViewController {
@@ -28,9 +29,11 @@ class TViewController: UIViewController {
                 var loading = StateModel.loading
                 loading.actionTitle = "取消"
                 loading.description = "正在加载中..."
+                loading.activityIndicatorAxis = .horizontal
                 self.onState(loading)
             }
         })
+        failure.image = UIImage(named: "star_wars")
         failure.title = "提示"
         failure.actionTitle = "重试"
         failure.description = fail.localizedDescription

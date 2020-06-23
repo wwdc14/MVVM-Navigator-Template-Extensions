@@ -1,4 +1,5 @@
 import SnapKit
+import SwiftyGif
 import UIKit.UIView
 import UIKit.UIViewController
 import UIKit.UIActivityIndicatorView
@@ -14,6 +15,10 @@ public protocol StateType {
     var actionTitle: String?    { set get }
     
     var image: UIImage?         { set get }
+    
+    var visibleActivityIndicator: Bool { set get }
+    
+    var activityIndicatorAxis: NSLayoutConstraint.Axis { set get }
     
     var state: UIViewController.State { get }
     
@@ -140,6 +145,10 @@ extension UIViewController {
         
         public var action: Action?
         
+        public var visibleActivityIndicator: Bool = true
+        
+        public var activityIndicatorAxis: NSLayoutConstraint.Axis = .vertical
+        
         public static let none = StateModel(.none)
         
         public static let loading = StateModel(.loading)
@@ -180,7 +189,18 @@ extension UIViewController {
         }(UILabel())
         
         #if swift(>=4.2)
-        public let activityIndicatorView: UIActivityIndicatorView = {
+        public let hActivityIndicatorView: UIActivityIndicatorView = {
+            $0.isHidden = true
+            $0.hidesWhenStopped = true
+            #if os(tvOS)
+            $0.style = .whiteLarge
+            #endif
+            #if os(iOS)
+            $0.style = .gray
+            #endif
+            return $0
+        }(UIActivityIndicatorView(style: .whiteLarge))
+        public let vActivityIndicatorView: UIActivityIndicatorView = {
             $0.isHidden = true
             $0.hidesWhenStopped = true
             #if os(tvOS)
@@ -192,7 +212,19 @@ extension UIViewController {
             return $0
         }(UIActivityIndicatorView(style: .whiteLarge))
         #else
-        public let activityIndicatorView: UIActivityIndicatorView = {
+        public let hActivityIndicatorView: UIActivityIndicatorView = {
+            $0.isHidden = true
+            $0.hidesWhenStopped = true
+            #if os(tvOS)
+                $0.activityIndicatorViewStyle = .whiteLarge
+            #endif
+            
+            #if os(iOS)
+                $0.activityIndicatorViewStyle = .gray
+            #endif
+            return $0
+        }(UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge))
+        public let vActivityIndicatorView: UIActivityIndicatorView = {
             $0.isHidden = true
             $0.hidesWhenStopped = true
             #if os(tvOS)
@@ -241,10 +273,11 @@ extension UIViewController {
             actionButton.addTarget(self, action: #selector(actionButtonAction), for: .touchUpInside)
             
             addSubview(horizontalStackView)
-            horizontalStackView.addArrangedSubview(activityIndicatorView)
+            horizontalStackView.addArrangedSubview(hActivityIndicatorView)
             horizontalStackView.addArrangedSubview(verticalStackView)
             
             verticalStackView.addArrangedSubview(imageView)
+            verticalStackView.addArrangedSubview(vActivityIndicatorView)
             verticalStackView.addArrangedSubview(titleLabel)
             verticalStackView.addArrangedSubview(descriptionLabel)
             verticalStackView.addArrangedSubview(actionButton)
@@ -254,6 +287,11 @@ extension UIViewController {
                 $0.centerX.equalToSuperview()
                 $0.width.lessThanOrEqualTo(UIScreen.main.bounds.width - 40)
             }
+//            imageView.snp.makeConstraints { make in
+//                make.width.greaterThanOrEqualTo(UIScreen.main.bounds.width - 40)
+//            }
+            
+            backgroundColor = .white
             
         }
         
@@ -273,25 +311,45 @@ extension UIViewController {
         }
         
         public func onUpdate(_ model: StateType) {
-            
             self.model = model
-            imageView.image = model.image
+            imageView.stopAnimatingGif()
+            if let image = model.image, image.imageData != nil {
+                imageView.setGifImage(image, manager: .defaultManager, loopCount: -1)
+                imageView.startAnimatingGif()
+            } else if let image = model.image {
+                imageView.gifImage = nil
+                imageView.image = image
+            } else {
+                imageView.image = nil
+                imageView.gifImage = nil
+            }
             titleLabel.text = model.title
             descriptionLabel.text = model.description
             actionButton.setTitle(model.actionTitle, for: UIControl.State())
+            
             if case .loading = model.state {
                 
-                activityIndicatorView.startAnimating()
+                hActivityIndicatorView.startAnimating()
+                vActivityIndicatorView.startAnimating()
+                if model.activityIndicatorAxis == .horizontal {
+                    hActivityIndicatorView.isHidden = !model.visibleActivityIndicator
+                    vActivityIndicatorView.isHidden = true
+                } else if model.activityIndicatorAxis == .vertical {
+                    vActivityIndicatorView.isHidden = !model.visibleActivityIndicator
+                    hActivityIndicatorView.isHidden = true
+                }
                 alpha = 1
                 
             } else if case .success = model.state {
                 
-                activityIndicatorView.stopAnimating()
+                hActivityIndicatorView.stopAnimating()
+                vActivityIndicatorView.stopAnimating()
                 alpha = 0
                 
             } else if case .failure = model.state {
                
-                activityIndicatorView.stopAnimating()
+                hActivityIndicatorView.stopAnimating()
+                vActivityIndicatorView.stopAnimating()
                 alpha = 1
                 
             } else {
@@ -304,7 +362,7 @@ extension UIViewController {
             descriptionLabel.isHidden = descriptionLabel.text == nil
             actionButton.isHidden = model.action == nil
             
-            verticalStackView.isHidden = imageView.isHidden && descriptionLabel.isHidden && actionButton.isHidden
+            verticalStackView.isHidden = imageView.isHidden && descriptionLabel.isHidden && actionButton.isHidden && titleLabel.isHidden
             
         }
         

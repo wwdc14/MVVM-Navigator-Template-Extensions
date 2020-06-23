@@ -1,14 +1,6 @@
-//
-//  HyNavigationController.swift
-//  MVVM-Navigator-Extensions
-//
-//  Created by Hy on 2020/6/22.
-//  Copyright © 2020 Hy. All rights reserved.
-//
-
 import UIKit
 
-class HyNavigationController: UINavigationController, UIGestureRecognizerDelegate {
+class FixInteractiveNavigationController: UINavigationController, UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()

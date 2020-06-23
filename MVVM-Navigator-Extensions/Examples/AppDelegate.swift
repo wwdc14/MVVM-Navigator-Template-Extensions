@@ -12,11 +12,10 @@ import MVVMNavigatorExtensions
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         MVVMNavigatorExtensions.works()
+        MVVMNavigatorExtensions.navigation.backImage = UIImage(named: "nav_getback_template")
         return true
     }
 

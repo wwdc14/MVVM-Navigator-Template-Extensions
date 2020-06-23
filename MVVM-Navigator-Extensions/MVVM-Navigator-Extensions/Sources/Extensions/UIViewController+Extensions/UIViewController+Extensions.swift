@@ -2,12 +2,9 @@ import UIKit
 import RxSwift
 import MBProgressHUD
 
-public protocol DisposeBagble {
-    var disposeBag: DisposeBag { get }
-}
-
 public protocol UIViewControllerCustomBackItemble {
     
+    var disposeBag: DisposeBag { get }
     var customBackButton: UIButton { get }
     var canGoback: Bool { get }
     
@@ -24,7 +21,19 @@ public protocol UIViewControllerBasicMethod {
 
 extension UIViewController: UIViewControllerCustomBackItemble {
     
-    open var customBackButton: UIButton {
+    public var disposeBag: DisposeBag {
+        let _disposeBag: DisposeBag
+        if let bag = objc_getAssociatedObject(self, &AssociatedKeys.disposeBag_key) as? DisposeBag {
+            _disposeBag = bag
+        } else {
+            let bag = DisposeBag()
+            objc_setAssociatedObject(self, &AssociatedKeys.disposeBag_key, bag, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            _disposeBag = bag
+        }
+        return _disposeBag
+    }
+    
+    public var customBackButton: UIButton {
         let button: UIButton
         if let _button = objc_getAssociatedObject(self, &AssociatedKeys.customBackButton_key) as? UIButton {
             button = _button
@@ -63,11 +72,11 @@ extension UIViewController: UIViewControllerCustomBackItemble {
 
 extension UIViewController: UIViewControllerBasicMethod {
     
-    public func onec_viewWillAppear() {}
+    @objc open func onec_viewWillAppear() {}
     
-    public func onec_viewDidAppear() {}
+    @objc open func onec_viewDidAppear() {}
     
-    public func bindViewModel() {}
+    @objc open func bindViewModel() {}
     
 }
 
@@ -142,10 +151,18 @@ extension UIViewController {
     
     private func setBackButtonItem() {
         if let viewControllers = navigationController?.viewControllers, viewControllers.count > 1 {
-            customBackButton.setTitle("   ", for: .normal)
+            customBackButton.setImage(MVVMNavigatorExtensions.navigation.backImage, for: UIControl.State())
+            if MVVMNavigatorExtensions.navigation.backTitle.isEmpty {
+                customBackButton.setTitle("   ", for: .normal)
+            } else {
+                customBackButton.setTitle(MVVMNavigatorExtensions.navigation.backTitle, for: UIControl.State())
+            }
+            customBackButton.snp.makeConstraints { make in
+                make.height.equalTo(44)
+            }
+            customBackButton.imageView?.contentMode = .scaleAspectFit
             let leftBarBtn = UIBarButtonItem(customView: customBackButton)
             navigationItem.leftBarButtonItems = [leftBarBtn]
-//            navigationItem.leftItemsSupplementBackButton = true
         }
     }
     

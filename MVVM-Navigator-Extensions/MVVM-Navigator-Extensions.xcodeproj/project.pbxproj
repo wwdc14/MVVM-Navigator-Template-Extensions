@@ -37,8 +37,11 @@
 		04EBEA6C24A0EEAD00333ABC /* MVVMNavigatorExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04EBEA0324A0499100333ABC /* MVVMNavigatorExtensions.framework */; };
 		04EBEA6D24A0EEAD00333ABC /* MVVMNavigatorExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04EBEA0324A0499100333ABC /* MVVMNavigatorExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04EBEA7224A0EF7200333ABC /* TViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBEA7124A0EF7200333ABC /* TViewController.swift */; };
-		04EBEA7524A0F1D400333ABC /* HyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBEA7424A0F1D400333ABC /* HyNavigationController.swift */; };
+		04EBEA7524A0F1D400333ABC /* FixInteractiveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBEA7424A0F1D400333ABC /* FixInteractiveNavigationController.swift */; };
 		04EBEA7824A0FA4A00333ABC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04EBEA7724A0FA4A00333ABC /* SnapKit */; };
+		04EBEA8824A1997900333ABC /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBEA8724A1997900333ABC /* ViewModelType.swift */; };
+		04EBEA8C24A19FBB00333ABC /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBEA8B24A19FBB00333ABC /* StoryboardInstantiable.swift */; };
+		04EBEA8F24A1C24200333ABC /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = 04EBEA8E24A1C24200333ABC /* SwiftyGif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,7 +92,9 @@
 		04EBEA6524A0EE9F00333ABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04EBEA6724A0EE9F00333ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04EBEA7124A0EF7200333ABC /* TViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TViewController.swift; sourceTree = "<group>"; };
-		04EBEA7424A0F1D400333ABC /* HyNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyNavigationController.swift; sourceTree = "<group>"; };
+		04EBEA7424A0F1D400333ABC /* FixInteractiveNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixInteractiveNavigationController.swift; sourceTree = "<group>"; };
+		04EBEA8724A1997900333ABC /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		04EBEA8B24A19FBB00333ABC /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EBEA2E24A0816E00333ABC /* RxSwift in Frameworks */,
+				04EBEA8F24A1C24200333ABC /* SwiftyGif in Frameworks */,
 				04EBEA4324A0CE7200333ABC /* URLMatcher in Frameworks */,
 				04EBEA3824A0B15100333ABC /* SwiftyJSON in Frameworks */,
 				04EBEA1D24A05FB600333ABC /* Kingfisher in Frameworks */,
@@ -121,6 +127,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04E964B424A1F97E001E9748 /* UINavigationController+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "UINavigationController+Extensions";
+			sourceTree = "<group>";
+		};
 		04EBE9F924A0499100333ABC = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +166,8 @@
 		04EBEA0E24A0499F00333ABC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				04EBEA8A24A19FB000333ABC /* StoryboardInstantiable */,
+				04EBEA8624A1995500333ABC /* MVVMProtocol */,
 				04EBEA7324A0F1AC00333ABC /* HyNavigationController */,
 				04EBEA3024A089B200333ABC /* UIViewControllerStateble */,
 				04EBEA1424A05BD000333ABC /* Extensions */,
@@ -164,6 +179,7 @@
 		04EBEA1424A05BD000333ABC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				04E964B424A1F97E001E9748 /* UINavigationController+Extensions */,
 				04EBEA4624A0CEF200333ABC /* URLNavigator+Extensions */,
 				04EBEA3924A0B7FF00333ABC /* Moya+Response+Mapper+Rx */,
 				04EBEA2724A080A200333ABC /* UIViewController+Reactive+Extensions */,
@@ -244,6 +260,7 @@
 		04EBEA5824A0EE9600333ABC /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				04EBEA7F24A1986600333ABC /* MVVM */,
 				04EBEA5924A0EE9600333ABC /* AppDelegate.swift */,
 				04EBEA5B24A0EE9600333ABC /* SceneDelegate.swift */,
 				04EBEA5D24A0EE9600333ABC /* ViewController.swift */,
@@ -266,9 +283,32 @@
 		04EBEA7324A0F1AC00333ABC /* HyNavigationController */ = {
 			isa = PBXGroup;
 			children = (
-				04EBEA7424A0F1D400333ABC /* HyNavigationController.swift */,
+				04EBEA7424A0F1D400333ABC /* FixInteractiveNavigationController.swift */,
 			);
 			path = HyNavigationController;
+			sourceTree = "<group>";
+		};
+		04EBEA7F24A1986600333ABC /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
+		04EBEA8624A1995500333ABC /* MVVMProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				04EBEA8724A1997900333ABC /* ViewModelType.swift */,
+			);
+			path = MVVMProtocol;
+			sourceTree = "<group>";
+		};
+		04EBEA8A24A19FB000333ABC /* StoryboardInstantiable */ = {
+			isa = PBXGroup;
+			children = (
+				04EBEA8B24A19FBB00333ABC /* StoryboardInstantiable.swift */,
+			);
+			path = StoryboardInstantiable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +350,7 @@
 				04EBEA4224A0CE7200333ABC /* URLMatcher */,
 				04EBEA4424A0CE7200333ABC /* URLNavigator */,
 				04EBEA7724A0FA4A00333ABC /* SnapKit */,
+				04EBEA8E24A1C24200333ABC /* SwiftyGif */,
 			);
 			productName = "MVVM-Navigator-Extensions";
 			productReference = 04EBEA0324A0499100333ABC /* MVVMNavigatorExtensions.framework */;
@@ -370,6 +411,7 @@
 				04EBEA3624A0B15100333ABC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				04EBEA4124A0CE7200333ABC /* XCRemoteSwiftPackageReference "URLNavigator" */,
 				04EBEA7624A0FA4A00333ABC /* XCRemoteSwiftPackageReference "SnapKit" */,
+				04EBEA8D24A1C24200333ABC /* XCRemoteSwiftPackageReference "SwiftyGif" */,
 			);
 			productRefGroup = 04EBEA0424A0499100333ABC /* Products */;
 			projectDirPath = "";
@@ -406,10 +448,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04EBEA7524A0F1D400333ABC /* HyNavigationController.swift in Sources */,
+				04EBEA7524A0F1D400333ABC /* FixInteractiveNavigationController.swift in Sources */,
 				04EBEA3224A089BF00333ABC /* UIViewControllerStateble.swift in Sources */,
 				04EBEA2624A0642000333ABC /* UIViewController+Extensions.swift in Sources */,
 				04EBEA5224A0EE2400333ABC /* MVVMNavigatorExtensions.swift in Sources */,
+				04EBEA8C24A19FBB00333ABC /* StoryboardInstantiable.swift in Sources */,
 				04EBEA4024A0C8C600333ABC /* ResponseMapper+Rx.swift in Sources */,
 				04EBEA2924A080E800333ABC /* UIViewController+Reactive+Extensions.swift in Sources */,
 				04EBEA1724A05C0D00333ABC /* MBProgressHUD+Extensions.swift in Sources */,
@@ -418,6 +461,7 @@
 				04EBEA4824A0CF3F00333ABC /* URLNavigator+Extensions.swift in Sources */,
 				04EBEA3E24A0B85600333ABC /* ServiceSuccessVerificationble.swift in Sources */,
 				04EBEA2024A0620700333ABC /* UIColor+Extensions.swift in Sources */,
+				04EBEA8824A1997900333ABC /* ViewModelType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +804,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		04EBEA8D24A1C24200333ABC /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://gitee.com/WWDC14/SwiftyGif";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -812,6 +864,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04EBEA7624A0FA4A00333ABC /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		04EBEA8E24A1C24200333ABC /* SwiftyGif */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04EBEA8D24A1C24200333ABC /* XCRemoteSwiftPackageReference "SwiftyGif" */;
+			productName = SwiftyGif;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
