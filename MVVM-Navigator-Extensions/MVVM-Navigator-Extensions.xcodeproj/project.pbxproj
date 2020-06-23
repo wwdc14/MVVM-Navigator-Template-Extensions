@@ -38,6 +38,7 @@
 		04EBEA6D24A0EEAD00333ABC /* MVVMNavigatorExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04EBEA0324A0499100333ABC /* MVVMNavigatorExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04EBEA7224A0EF7200333ABC /* TViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBEA7124A0EF7200333ABC /* TViewController.swift */; };
 		04EBEA7524A0F1D400333ABC /* HyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBEA7424A0F1D400333ABC /* HyNavigationController.swift */; };
+		04EBEA7824A0FA4A00333ABC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04EBEA7724A0FA4A00333ABC /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 				04EBEA2C24A0816E00333ABC /* RxCocoa in Frameworks */,
 				04EBEA1324A05AD600333ABC /* RxMoya in Frameworks */,
 				04EBEA1124A05AD600333ABC /* Moya in Frameworks */,
+				04EBEA7824A0FA4A00333ABC /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +309,7 @@
 				04EBEA3724A0B15100333ABC /* SwiftyJSON */,
 				04EBEA4224A0CE7200333ABC /* URLMatcher */,
 				04EBEA4424A0CE7200333ABC /* URLNavigator */,
+				04EBEA7724A0FA4A00333ABC /* SnapKit */,
 			);
 			productName = "MVVM-Navigator-Extensions";
 			productReference = 04EBEA0324A0499100333ABC /* MVVMNavigatorExtensions.framework */;
@@ -366,6 +369,7 @@
 				04EBEA2A24A0816E00333ABC /* XCRemoteSwiftPackageReference "RxSwift" */,
 				04EBEA3624A0B15100333ABC /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				04EBEA4124A0CE7200333ABC /* XCRemoteSwiftPackageReference "URLNavigator" */,
+				04EBEA7624A0FA4A00333ABC /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 04EBEA0424A0499100333ABC /* Products */;
 			projectDirPath = "";
@@ -748,6 +752,14 @@
 				minimumVersion = 2.3.0;
 			};
 		};
+		04EBEA7624A0FA4A00333ABC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -795,6 +807,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04EBEA4124A0CE7200333ABC /* XCRemoteSwiftPackageReference "URLNavigator" */;
 			productName = URLNavigator;
+		};
+		04EBEA7724A0FA4A00333ABC /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04EBEA7624A0FA4A00333ABC /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,3 +1,4 @@
+import SnapKit
 import UIKit.UIView
 import UIKit.UIViewController
 import UIKit.UIActivityIndicatorView
@@ -86,17 +87,10 @@ extension UIViewController: UIViewControllerStateble {
             } else {
                 let stateView = StateView(model: StateModel.none)
                 stateView.tag = UIViewController.StateViewTag
+                stateView.alpha = 0
                 stateView.isHidden = true
                 view.addSubview(stateView)
-                stateView.translatesAutoresizingMaskIntoConstraints = false
-                NSLayoutConstraint.activate([
-                    stateView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                    stateView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-                    stateView.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor),
-                    stateView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
-                    stateView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor),
-                    stateView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor)
-                ])
+                stateView.snp.makeConstraints{$0.edges.equalToSuperview()}
                 return stateView
             }
         }
@@ -104,20 +98,21 @@ extension UIViewController: UIViewControllerStateble {
             view.viewWithTag(UIViewController.StateViewTag)?.removeFromSuperview()
             newValue.tag = UIViewController.StateViewTag
             view.addSubview(view)
-            newValue.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                newValue.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                newValue.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-                newValue.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor),
-                newValue.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
-                newValue.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor),
-                newValue.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor)
-            ])
+            stateView.snp.makeConstraints{$0.edges.equalToSuperview()}
         }
     }
     
     public func onState(_ state: StateType) {
-        stateView.onUpdate(state)
+        if self.stateView.alpha == 0 {
+            self.stateView.isHidden = false
+        }
+        UIView.transition(with: stateView, duration: 0.25, options: .transitionCrossDissolve, animations: {
+            self.stateView.onUpdate(state)
+        }, completion: { _ in
+            if self.stateView.alpha == 0 {
+                self.stateView.isHidden = true
+            }
+        })
     }
     
 }
@@ -170,7 +165,8 @@ extension UIViewController {
             $0.font = UIFont.preferredFont(forTextStyle: .headline)
             $0.textColor = UIColor.black
             $0.textAlignment = .center
-            
+            $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+            $0.setContentHuggingPriority(.defaultHigh, for: .vertical)
             return $0
         }(UILabel())
         
@@ -230,11 +226,10 @@ extension UIViewController {
         }(UIStackView())
         
         public let horizontalStackView: UIStackView = {
-            $0.translatesAutoresizingMaskIntoConstraints = false
             $0.axis = .horizontal
             $0.spacing = 10
             $0.alignment = .center
-            
+            $0.distribution = .equalSpacing
             return $0
         }(UIStackView())
         
@@ -243,14 +238,43 @@ extension UIViewController {
             self.model = model
             super.init(frame: .zero)
             
+            actionButton.addTarget(self, action: #selector(actionButtonAction), for: .touchUpInside)
+            
+            addSubview(horizontalStackView)
+            horizontalStackView.addArrangedSubview(activityIndicatorView)
+            horizontalStackView.addArrangedSubview(verticalStackView)
+            
+            verticalStackView.addArrangedSubview(imageView)
+            verticalStackView.addArrangedSubview(titleLabel)
+            verticalStackView.addArrangedSubview(descriptionLabel)
+            verticalStackView.addArrangedSubview(actionButton)
+            
+            horizontalStackView.snp.makeConstraints{
+                $0.top.bottom.equalToSuperview()
+                $0.centerX.equalToSuperview()
+                $0.width.lessThanOrEqualTo(UIScreen.main.bounds.width - 40)
+            }
+            
+        }
+        
+        open override var tintColor: UIColor! {
+            didSet {
+                titleLabel.textColor = tintColor
+                descriptionLabel.textColor = tintColor
+            }
         }
         
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
         
+        @objc func actionButtonAction() {
+            model.action?()
+        }
+        
         public func onUpdate(_ model: StateType) {
             
+            self.model = model
             imageView.image = model.image
             titleLabel.text = model.title
             descriptionLabel.text = model.description
@@ -258,20 +282,21 @@ extension UIViewController {
             if case .loading = model.state {
                 
                 activityIndicatorView.startAnimating()
+                alpha = 1
                 
             } else if case .success = model.state {
                 
                 activityIndicatorView.stopAnimating()
-                isHidden = true
+                alpha = 0
                 
             } else if case .failure = model.state {
                
                 activityIndicatorView.stopAnimating()
-                isHidden = false
+                alpha = 1
                 
             } else {
                 /// `none`
-                isHidden = true
+                alpha = 0
             }
             
             imageView.isHidden = imageView.image == nil

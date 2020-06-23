@@ -11,6 +11,10 @@ import MVVMNavigatorExtensions
 
 class TViewController: UIViewController {
 
+    enum Errors: Error {
+        case fail
+    }
+    
     var flag = false
     
     override func viewDidLoad() {
@@ -18,6 +22,19 @@ class TViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now()+5) {
             self.flag = true
         }
+        let fail = Errors.fail
+        var failure = StateModel.failure(fail, action: {
+            DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+                var loading = StateModel.loading
+                loading.actionTitle = "取消"
+                loading.description = "正在加载中..."
+                self.onState(loading)
+            }
+        })
+        failure.title = "提示"
+        failure.actionTitle = "重试"
+        failure.description = fail.localizedDescription
+        onState(failure)
         // Do any additional setup after loading the view.
     }
     
