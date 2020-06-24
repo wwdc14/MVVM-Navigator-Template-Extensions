@@ -1,5 +1,5 @@
  
-///  Created by `___FULLUSERNAME___` on ___DATE___.
+///  Created by `Hy` on 2020/6/24.
  
 
 import UIKit
@@ -7,10 +7,10 @@ import RxSwift
 import RxCocoa
 import MVVMNavigatorExtensions
 
-class ___VARIABLE_sceneIdentifier___ViewController: UIViewController, StoryboardInstantiable {
+class MVViewController: UIViewController {
     
-    lazy var input = ___VARIABLE_sceneIdentifier___ViewModel.Input()
-    lazy var viewModel = ___VARIABLE_sceneIdentifier___ViewModel(disposeBag)
+    lazy var input = MVViewModel.Input()
+    lazy var viewModel = MVViewModel(disposeBag)
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
  
-///  Created by `___FULLUSERNAME___` on ___DATE___.
+///  Created by `Hy` on 2020/6/24.
  
 
 import RxSwift
@@ -14,12 +14,12 @@ precedencegroup Precedence {
     assignment: false
 }
 infix operator <<<: Precedence
-func <<<(left: ___VARIABLE_sceneIdentifier___ViewModel, right: ___VARIABLE_sceneIdentifier___ViewModel.Input) -> ___VARIABLE_sceneIdentifier___ViewModel.Output {
+func <<<(left: MVViewModel, right: MVViewModel.Input) -> MVViewModel.Output {
     var _left = left
     return _left.transform(input: right)
 }
 
-extension ___VARIABLE_sceneIdentifier___ViewModel {
+extension MVViewModel {
     // MARK: - INPUT
     struct Input {
         // MARK: - INPUT. View event methods
@@ -33,7 +33,7 @@ extension ___VARIABLE_sceneIdentifier___ViewModel {
     }
 }
 
-struct ___VARIABLE_sceneIdentifier___ViewModel: ViewModelType {
+struct MVViewModel: ViewModelType {
      
     let disposeBag: DisposeBag
     fileprivate let _state = PublishSubject<StateType>()

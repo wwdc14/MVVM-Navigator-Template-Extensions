@@ -5,6 +5,7 @@
 import RxSwift
 import RxCocoa
 import Foundation
+import UIKit.UIViewController
 import MVVMNavigatorExtensions
 
 precedencegroup Precedence {
@@ -28,12 +29,14 @@ extension ___VARIABLE_sceneIdentifier___ViewModel {
     // MARK: - OUTPUT
     struct Output {
         //let route: Driver<RoutType>
+        let state: Driver<StateType>
     }
 }
 
 struct ___VARIABLE_sceneIdentifier___ViewModel: ViewModelType {
      
     let disposeBag: DisposeBag
+    fileprivate let _state = PublishSubject<StateType>()
      
     init(_ disposeBag: DisposeBag) {
         self.disposeBag = disposeBag
@@ -41,7 +44,7 @@ struct ___VARIABLE_sceneIdentifier___ViewModel: ViewModelType {
      
     mutating func transform(input: Input) -> Output {
         
-        return Output()
+        return Output(state: _state.asDriver(onErrorJustReturn: UIViewController.StateModel.none))
     }
  }
 

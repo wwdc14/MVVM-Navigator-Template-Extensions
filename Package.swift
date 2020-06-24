@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "MVVM-Navigator-Extensions",
+    platforms: [.iOS(.v10)],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
@@ -42,5 +43,6 @@ let package = Package(
             name: "MVVM-Navigator-ExtensionsTests",
             dependencies: ["MVVM-Navigator-Extensions"],
             path: "MVVM-Navigator-Extensions/Tests/"),
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )

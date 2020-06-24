@@ -18,7 +18,12 @@ class ___VARIABLE_sceneIdentifier___ViewController: UIViewController {
     }
     
     override func bindViewModel() {
-        super.bindViewModel()
+        
+        /// `transform`
+        let output = viewModel <<< input
+        
+        /// `binds`
+        output.state.drive(rx.state).disposed(by: disposeBag)
         
     }
     

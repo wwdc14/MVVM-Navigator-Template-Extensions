@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0473C5EE24A304A7005CEA52 /* MVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473C5EC24A304A7005CEA52 /* MVViewController.swift */; };
+		0473C5EF24A304A7005CEA52 /* MVViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473C5ED24A304A7005CEA52 /* MVViewModel.swift */; };
 		04EBEA0824A0499100333ABC /* MVVM_Navigator_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 04EBEA0624A0499100333ABC /* MVVM_Navigator_Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04EBEA1124A05AD600333ABC /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 04EBEA1024A05AD600333ABC /* Moya */; };
 		04EBEA1324A05AD600333ABC /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 04EBEA1224A05AD600333ABC /* RxMoya */; };
@@ -69,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0473C5EC24A304A7005CEA52 /* MVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVViewController.swift; sourceTree = "<group>"; };
+		0473C5ED24A304A7005CEA52 /* MVViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVViewModel.swift; sourceTree = "<group>"; };
 		04EBEA0324A0499100333ABC /* MVVMNavigatorExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MVVMNavigatorExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EBEA0624A0499100333ABC /* MVVM_Navigator_Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVVM_Navigator_Extensions.h; sourceTree = "<group>"; };
 		04EBEA0724A0499100333ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -291,6 +295,8 @@
 		04EBEA7F24A1986600333ABC /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				0473C5EC24A304A7005CEA52 /* MVViewController.swift */,
+				0473C5ED24A304A7005CEA52 /* MVViewModel.swift */,
 			);
 			path = MVVM;
 			sourceTree = "<group>";
@@ -470,7 +476,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EBEA5E24A0EE9600333ABC /* ViewController.swift in Sources */,
+				0473C5EE24A304A7005CEA52 /* MVViewController.swift in Sources */,
 				04EBEA5A24A0EE9600333ABC /* AppDelegate.swift in Sources */,
+				0473C5EF24A304A7005CEA52 /* MVViewModel.swift in Sources */,
 				04EBEA5C24A0EE9600333ABC /* SceneDelegate.swift in Sources */,
 				04EBEA7224A0EF7200333ABC /* TViewController.swift in Sources */,
 			);
