@@ -4,13 +4,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "MVVM-Navigator-Extensions",
+    name: "MVVMExtensions",
     platforms: [.iOS(.v10)],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
-            name: "MVVM-Navigator-Extensions",
-            targets: ["MVVM-Navigator-Extensions"]),
+            name: "MVVMExtensions",
+            targets: ["MVVMExtensions"]),
     ],
     dependencies: [
         .package(url: "https://github.com/Moya/Moya.git", .upToNextMajor(from: "14.0.0")),
@@ -24,7 +24,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "MVVM-Navigator-Extensions",
+            name: "MVVMExtensions",
             dependencies: [
                 Target.Dependency.byName(name: "SwiftyJSON"),
                 Target.Dependency.byName(name: "MBProgressHUD"),
@@ -41,7 +41,7 @@ let package = Package(
         ),
         .testTarget(
             name: "MVVM-Navigator-ExtensionsTests",
-            dependencies: ["MVVM-Navigator-Extensions"],
+            dependencies: ["MVVMExtensions"],
             path: "MVVM-Navigator-Extensions/Tests/"),
     ],
     swiftLanguageVersions: [.v5]
