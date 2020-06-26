@@ -5,8 +5,8 @@
 import RxSwift
 import RxCocoa
 import Foundation
+import MVVMRExtensions
 import UIKit.UIViewController
-import MVVMNavigatorExtensions
 
 precedencegroup Precedence {
     lowerThan: AdditionPrecedence

@@ -5,7 +5,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import MVVMNavigatorExtensions
+import MVVMRExtensions
 
 class ___VARIABLE_sceneIdentifier___ViewController: UIViewController {
     

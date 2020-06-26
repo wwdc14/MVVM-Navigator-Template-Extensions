@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "MVVMRExtensions",
+    platforms: [.iOS(.v10)],
     products: [
         .library(
             name: "MVVMRExtensions",
@@ -40,5 +41,6 @@ let package = Package(
             name: "MVVMRExtensionsTests",
             dependencies: ["MVVMRExtensions"],
             path: "MVVMRExtensions/Tests"),
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )
