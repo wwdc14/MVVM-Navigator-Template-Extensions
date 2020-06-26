@@ -1,6 +1,6 @@
 import UIKit
 
-public struct MVVMNavigatorExtensions {
+public struct MVVMRExtensions {
     
     public static var navigation = Navigation.self
     

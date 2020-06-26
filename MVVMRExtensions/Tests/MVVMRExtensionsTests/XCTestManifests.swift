@@ -3,7 +3,7 @@ import XCTest
 #if !canImport(ObjectiveC)
 public func allTests() -> [XCTestCaseEntry] {
     return [
-        testCase(MVVM_Navigator_ExtensionsTests.allTests),
+        testCase(MVVMRExtensionsTests.allTests),
     ]
 }
 #endif

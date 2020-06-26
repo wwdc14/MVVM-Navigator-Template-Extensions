@@ -4,13 +4,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "MVVMExtensions",
-    platforms: [.iOS(.v10)],
+    name: "MVVMRExtensions",
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
-            name: "MVVMExtensions",
-            targets: ["MVVMExtensions"]),
+            name: "MVVMRExtensions",
+            targets: ["MVVMRExtensions"]),
     ],
     dependencies: [
         .package(url: "https://github.com/Moya/Moya.git", .upToNextMajor(from: "14.0.0")),
@@ -24,7 +22,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "MVVMExtensions",
+            name: "MVVMRExtensions",
             dependencies: [
                 Target.Dependency.byName(name: "SwiftyJSON"),
                 Target.Dependency.byName(name: "MBProgressHUD"),
@@ -36,13 +34,11 @@ let package = Package(
                 Target.Dependency.product(name: "URLMatcher", package: "URLNavigator"),
                 Target.Dependency.product(name: "RxMoya", package: "Moya"),
                 Target.Dependency.product(name: "RxCocoa", package: "RxSwift")
-            ],
-            path: "MVVM-Navigator-Extensions/MVVM-Navigator-Extensions/Sources"
-        ),
+        ],
+            path: "MVVMRExtensions/Sources"),
         .testTarget(
-            name: "MVVM-Navigator-ExtensionsTests",
-            dependencies: ["MVVMExtensions"],
-            path: "MVVM-Navigator-Extensions/Tests/"),
-    ],
-    swiftLanguageVersions: [.v5]
+            name: "MVVMRExtensionsTests",
+            dependencies: ["MVVMRExtensions"],
+            path: "MVVMRExtensions/Tests"),
+    ]
 )
