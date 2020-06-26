@@ -9,7 +9,7 @@ public struct MVVMRExtensions {
     }
 }
 
-extension MVVMNavigatorExtensions {
+extension MVVMRExtensions {
     public struct Navigation {
         public static var backTitle: String = ""
         public static var backImage: UIImage? = nil

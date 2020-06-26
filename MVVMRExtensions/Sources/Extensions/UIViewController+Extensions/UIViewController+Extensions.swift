@@ -151,11 +151,11 @@ extension UIViewController {
     
     private func setBackButtonItem() {
         if let viewControllers = navigationController?.viewControllers, viewControllers.count > 1 {
-            customBackButton.setImage(MVVMNavigatorExtensions.navigation.backImage, for: UIControl.State())
-            if MVVMNavigatorExtensions.navigation.backTitle.isEmpty {
+            customBackButton.setImage(MVVMRExtensions.navigation.backImage, for: UIControl.State())
+            if MVVMRExtensions.navigation.backTitle.isEmpty {
                 customBackButton.setTitle("   ", for: .normal)
             } else {
-                customBackButton.setTitle(MVVMNavigatorExtensions.navigation.backTitle, for: UIControl.State())
+                customBackButton.setTitle(MVVMRExtensions.navigation.backTitle, for: UIControl.State())
             }
             customBackButton.snp.makeConstraints { make in
                 make.height.equalTo(44)
