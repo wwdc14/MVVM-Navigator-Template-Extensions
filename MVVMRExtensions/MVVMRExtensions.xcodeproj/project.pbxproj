@@ -182,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				04E09E8D24A4F1790038AEAB /* Sources */,
-				04E09EA624A4F1790038AEAB /* MVVMRExtensions.swift */,
 				04E09E5E24A4F0320038AEAB /* MVVMRExtensions.h */,
 				04E09E5F24A4F0320038AEAB /* Info.plist */,
 			);
@@ -192,6 +191,7 @@
 		04E09E8D24A4F1790038AEAB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				04E09EA624A4F1790038AEAB /* MVVMRExtensions.swift */,
 				04E09E8E24A4F1790038AEAB /* StoryboardInstantiable */,
 				04E09E9024A4F1790038AEAB /* FixInteractiveNavigationController */,
 				04E09E9224A4F1790038AEAB /* UIViewControllerStateble */,
