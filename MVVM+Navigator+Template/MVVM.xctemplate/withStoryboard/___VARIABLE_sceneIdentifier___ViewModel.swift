@@ -15,8 +15,7 @@ precedencegroup Precedence {
 }
 infix operator <<<: Precedence
 func <<<(left: ___VARIABLE_sceneIdentifier___ViewModel, right: ___VARIABLE_sceneIdentifier___ViewModel.Input) -> ___VARIABLE_sceneIdentifier___ViewModel.Output {
-    var _left = left
-    return _left.transform(input: right)
+    return left.transform(input: right)
 }
 
 extension ___VARIABLE_sceneIdentifier___ViewModel {
@@ -33,7 +32,7 @@ extension ___VARIABLE_sceneIdentifier___ViewModel {
     }
 }
 
-struct ___VARIABLE_sceneIdentifier___ViewModel: ViewModelType {
+class ___VARIABLE_sceneIdentifier___ViewModel: ViewModelType {
      
     let disposeBag: DisposeBag
     fileprivate let _state = PublishSubject<StateType>()
@@ -42,7 +41,7 @@ struct ___VARIABLE_sceneIdentifier___ViewModel: ViewModelType {
         self.disposeBag = disposeBag
     }
      
-    mutating func transform(input: Input) -> Output {
+    func transform(input: Input) -> Output {
         
         return Output(state: _state.asDriver(onErrorJustReturn: UIViewController.StateModel.none))
     }

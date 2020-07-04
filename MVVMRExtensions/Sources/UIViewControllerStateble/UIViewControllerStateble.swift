@@ -159,6 +159,19 @@ extension UIViewController {
             return StateModel(.failure(error), action: action)
         }
         
+        public static func loading(_ title: String? = nil,
+                                   description: String? = nil,
+                                   actionTitle: String? = nil,
+                                   image: UIImage? = nil) -> Self {
+            var loading = StateModel(.loading)
+            loading.title = title
+            loading.description = description
+            loading.actionTitle = actionTitle
+            loading.image = image
+            loading.activityIndicatorAxis = .horizontal
+            return loading
+        }
+        
         private init(_ state: State, action: Action? = nil) {
             self.state = state
             self.action = action
@@ -191,7 +204,6 @@ extension UIViewController {
         #if swift(>=4.2)
         public let hActivityIndicatorView: UIActivityIndicatorView = {
             $0.isHidden = true
-            $0.hidesWhenStopped = true
             #if os(tvOS)
             $0.style = .whiteLarge
             #endif
@@ -202,7 +214,6 @@ extension UIViewController {
         }(UIActivityIndicatorView(style: .whiteLarge))
         public let vActivityIndicatorView: UIActivityIndicatorView = {
             $0.isHidden = true
-            $0.hidesWhenStopped = true
             #if os(tvOS)
             $0.style = .whiteLarge
             #endif
@@ -214,7 +225,6 @@ extension UIViewController {
         #else
         public let hActivityIndicatorView: UIActivityIndicatorView = {
             $0.isHidden = true
-            $0.hidesWhenStopped = true
             #if os(tvOS)
                 $0.activityIndicatorViewStyle = .whiteLarge
             #endif
@@ -226,7 +236,6 @@ extension UIViewController {
         }(UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge))
         public let vActivityIndicatorView: UIActivityIndicatorView = {
             $0.isHidden = true
-            $0.hidesWhenStopped = true
             #if os(tvOS)
                 $0.activityIndicatorViewStyle = .whiteLarge
             #endif
@@ -270,6 +279,14 @@ extension UIViewController {
             self.model = model
             super.init(frame: .zero)
             
+            let titleStackView = UIStackView()
+            titleStackView.addArrangedSubview(hActivityIndicatorView)
+            titleStackView.addArrangedSubview(titleLabel)
+            titleStackView.distribution = .equalSpacing
+            titleStackView.alignment = .fill
+            titleStackView.axis = .horizontal
+            titleStackView.spacing = 5
+            
             actionButton.addTarget(self, action: #selector(actionButtonAction), for: .touchUpInside)
             
             addSubview(horizontalStackView)
@@ -278,7 +295,7 @@ extension UIViewController {
             
             verticalStackView.addArrangedSubview(imageView)
             verticalStackView.addArrangedSubview(vActivityIndicatorView)
-            verticalStackView.addArrangedSubview(titleLabel)
+            verticalStackView.addArrangedSubview(titleStackView)
             verticalStackView.addArrangedSubview(descriptionLabel)
             verticalStackView.addArrangedSubview(actionButton)
             
@@ -331,11 +348,11 @@ extension UIViewController {
                 
                 hActivityIndicatorView.startAnimating()
                 vActivityIndicatorView.startAnimating()
+                vActivityIndicatorView.isHidden = true
+                hActivityIndicatorView.isHidden = true
                 if model.activityIndicatorAxis == .horizontal {
-                    hActivityIndicatorView.isHidden = !model.visibleActivityIndicator
                     vActivityIndicatorView.isHidden = true
                 } else if model.activityIndicatorAxis == .vertical {
-                    vActivityIndicatorView.isHidden = !model.visibleActivityIndicator
                     hActivityIndicatorView.isHidden = true
                 }
                 alpha = 1
@@ -354,6 +371,8 @@ extension UIViewController {
                 
             } else {
                 /// `none`
+                hActivityIndicatorView.stopAnimating()
+                vActivityIndicatorView.stopAnimating()
                 alpha = 0
             }
             

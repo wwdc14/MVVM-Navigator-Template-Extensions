@@ -1,5 +1,5 @@
  
-///  Created by `___FULLUSERNAME___` on ___DATE___.
+///  Created by `Hy` on 2020/6/29.
  
 
 import RxSwift
@@ -14,11 +14,11 @@ precedencegroup Precedence {
     assignment: false
 }
 infix operator <<<: Precedence
-func <<<(left: ___VARIABLE_sceneIdentifier___ViewModel, right: ___VARIABLE_sceneIdentifier___ViewModel.Input) -> ___VARIABLE_sceneIdentifier___ViewModel.Output {
+func <<<(left: ListerViewModel, right: ListerViewModel.Input) -> ListerViewModel.Output {
     return left.transform(input: right)
 }
 
-extension ___VARIABLE_sceneIdentifier___ViewModel {
+extension ListerViewModel {
     // MARK: - INPUT
     struct Input {
         // MARK: - INPUT. View event methods
@@ -32,7 +32,7 @@ extension ___VARIABLE_sceneIdentifier___ViewModel {
     }
 }
 
-class ___VARIABLE_sceneIdentifier___ViewModel: ViewModelType {
+class ListerViewModel: ViewModelType {
      
     let disposeBag: DisposeBag
     fileprivate let _state = PublishSubject<StateType>()
@@ -42,6 +42,11 @@ class ___VARIABLE_sceneIdentifier___ViewModel: ViewModelType {
     }
      
     func transform(input: Input) -> Output {
+        
+        input.viewDidLoad.subscribe { _ in
+            self._state.onNext(UIViewController.StateModel.loading("载入中...", description: "请稍后..."))
+        }.disposed(by: disposeBag)
+        
         
         return Output(state: _state.asDriver(onErrorJustReturn: UIViewController.StateModel.none))
     }
