@@ -1,6 +1,4 @@
- 
 ///  Created by `___FULLUSERNAME___` on ___DATE___.
- 
 
 import UIKit
 import RxSwift
@@ -20,7 +18,7 @@ class ___VARIABLE_sceneIdentifier___ViewController: UIViewController, Storyboard
     override func bindViewModel() {
         
         /// `transform`
-        let output = viewModel <<< input
+        let output = viewModel.transform(input: input)
         
         /// `binds`
         output.state.drive(rx.state).disposed(by: disposeBag)

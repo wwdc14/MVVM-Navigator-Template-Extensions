@@ -203,7 +203,7 @@ extension UIViewController {
         
         #if swift(>=4.2)
         public let hActivityIndicatorView: UIActivityIndicatorView = {
-            $0.isHidden = true
+            $0.hidesWhenStopped = true
             #if os(tvOS)
             $0.style = .whiteLarge
             #endif
@@ -213,7 +213,7 @@ extension UIViewController {
             return $0
         }(UIActivityIndicatorView(style: .whiteLarge))
         public let vActivityIndicatorView: UIActivityIndicatorView = {
-            $0.isHidden = true
+            $0.hidesWhenStopped = true
             #if os(tvOS)
             $0.style = .whiteLarge
             #endif
@@ -224,7 +224,7 @@ extension UIViewController {
         }(UIActivityIndicatorView(style: .whiteLarge))
         #else
         public let hActivityIndicatorView: UIActivityIndicatorView = {
-            $0.isHidden = true
+            $0.hidesWhenStopped = true
             #if os(tvOS)
                 $0.activityIndicatorViewStyle = .whiteLarge
             #endif
@@ -235,7 +235,7 @@ extension UIViewController {
             return $0
         }(UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge))
         public let vActivityIndicatorView: UIActivityIndicatorView = {
-            $0.isHidden = true
+            $0.hidesWhenStopped = true
             #if os(tvOS)
                 $0.activityIndicatorViewStyle = .whiteLarge
             #endif
@@ -290,7 +290,7 @@ extension UIViewController {
             actionButton.addTarget(self, action: #selector(actionButtonAction), for: .touchUpInside)
             
             addSubview(horizontalStackView)
-            horizontalStackView.addArrangedSubview(hActivityIndicatorView)
+//            horizontalStackView.addArrangedSubview(hActivityIndicatorView)
             horizontalStackView.addArrangedSubview(verticalStackView)
             
             verticalStackView.addArrangedSubview(imageView)
@@ -346,14 +346,14 @@ extension UIViewController {
             
             if case .loading = model.state {
                 
-                hActivityIndicatorView.startAnimating()
-                vActivityIndicatorView.startAnimating()
-                vActivityIndicatorView.isHidden = true
-                hActivityIndicatorView.isHidden = true
+                hActivityIndicatorView.stopAnimating()
+                vActivityIndicatorView.stopAnimating()
                 if model.activityIndicatorAxis == .horizontal {
-                    vActivityIndicatorView.isHidden = true
+                    vActivityIndicatorView.stopAnimating()
+                    hActivityIndicatorView.startAnimating()
                 } else if model.activityIndicatorAxis == .vertical {
-                    hActivityIndicatorView.isHidden = true
+                    hActivityIndicatorView.stopAnimating()
+                    vActivityIndicatorView.startAnimating()
                 }
                 alpha = 1
                 

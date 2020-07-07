@@ -44,7 +44,9 @@ class ListerViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         
         input.viewDidLoad.subscribe { _ in
-            self._state.onNext(UIViewController.StateModel.loading("载入中...", description: "请稍后..."))
+            var state = UIViewController.StateModel.loading("载入中...", description: "请稍后...")
+            state.image = UIImage(named: "star_wars")
+            self._state.onNext(state)
         }.disposed(by: disposeBag)
         
         
