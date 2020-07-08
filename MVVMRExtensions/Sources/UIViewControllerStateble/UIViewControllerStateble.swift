@@ -156,6 +156,8 @@ extension UIViewController {
         public static let success = StateModel(.success)
         
         public static func failure(_ error: Error, action: Action?) -> Self {
+            var failure = StateModel(.failure(error), action: action)
+            failure.description = error.localizedDescription
             return StateModel(.failure(error), action: action)
         }
         
