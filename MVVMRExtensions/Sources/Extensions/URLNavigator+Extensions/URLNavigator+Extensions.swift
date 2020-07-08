@@ -13,7 +13,9 @@ public protocol RoutType: Codable {
     
     var components: URLComponents { get }
     
-    var url: String { get }
+    var urlString: String { get }
+    
+    var url: URL { get }
     
 }
 
@@ -35,7 +37,10 @@ extension RoutType {
         
         return components
     }
-    public var url: String {
+    public var url: URL {
+        return components.url!
+    }
+    public var urlString: String {
         return components.url?.absoluteString ?? ""
     }
 }
