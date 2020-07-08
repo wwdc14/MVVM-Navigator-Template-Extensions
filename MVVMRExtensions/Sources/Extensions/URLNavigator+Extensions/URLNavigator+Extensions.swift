@@ -17,6 +17,8 @@ public protocol RoutType: Codable {
     
     var url: URL { get }
     
+    static var registerPattern: String { get }
+    
 }
 
 extension RoutType {
