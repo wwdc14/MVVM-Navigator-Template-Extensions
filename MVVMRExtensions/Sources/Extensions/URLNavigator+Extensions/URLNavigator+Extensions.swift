@@ -48,6 +48,11 @@ extension RoutType {
 
 extension NavigatorType {
     
+    public func register(_ rout: RoutType, _ factory: @escaping ViewControllerFactory) {
+        guard let url = rout.urlString.removingPercentEncoding else { fatalError("register failure! reason: because rout Conversion failed \(rout)") }
+        register(url, factory)
+    }
+    
     @discardableResult
     public func pushRout(_ rout: RoutType,
                          param: [String: Any] = [:],
