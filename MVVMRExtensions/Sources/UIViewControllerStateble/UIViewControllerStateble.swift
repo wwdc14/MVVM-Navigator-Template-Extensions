@@ -131,7 +131,7 @@ extension UIViewController {
         case failure(_ error: Error)
     }
     
-    public struct StateModel: StateType {
+    public class StateModel: StateType {
         
         public var title: String?
         
@@ -155,8 +155,8 @@ extension UIViewController {
         
         public static let success = StateModel(.success)
         
-        public static func failure(_ error: Error, action: Action?) -> Self {
-            var failure = StateModel(.failure(error), action: action)
+        public static func failure(_ error: Error, action: Action?) -> StateModel {
+            let failure = StateModel(.failure(error), action: action)
             failure.description = error.localizedDescription
             return StateModel(.failure(error), action: action)
         }
@@ -164,8 +164,8 @@ extension UIViewController {
         public static func loading(_ title: String? = nil,
                                    description: String? = nil,
                                    actionTitle: String? = nil,
-                                   image: UIImage? = nil) -> Self {
-            var loading = StateModel(.loading)
+                                   image: UIImage? = nil) -> StateModel {
+            let loading = StateModel(.loading)
             loading.title = title
             loading.description = description
             loading.actionTitle = actionTitle
