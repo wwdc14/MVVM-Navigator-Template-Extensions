@@ -93,7 +93,7 @@ extension UIViewController: UIViewControllerStateble {
         }
     }
     
-    open func onState(_ state: StateType) {
+    @objc open func onState(_ state: StateType) {
         if self.stateView.alpha == 0 {
             self.stateView.isHidden = false
         }
@@ -311,7 +311,7 @@ extension UIViewController {
             model.action?()
         }
         
-        open func onUpdate(_ model: StateType) {
+        @objc open func onUpdate(_ model: StateType) {
             self.model = model
             imageView.stopAnimatingGif()
             if let image = model.image, image.imageData != nil {
