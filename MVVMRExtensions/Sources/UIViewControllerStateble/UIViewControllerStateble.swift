@@ -28,13 +28,6 @@ public protocol StateType {
 
 extension StateType {
         var title: String? {
-//            if case .loading = state {
-//
-//            } else if case .success = state {
-//
-//            } else if case .failure(let error) = state {
-//
-//            }
             return ""
         }
         
@@ -46,13 +39,6 @@ extension StateType {
         }
         
         var actionTitle: String? {
-    //        if case .loading = state {
-    //
-    //        } else if case .success = state {
-    //
-    //        } else if case .failure(let error) = state {
-    //
-    //        }
             return ""
         }
         
@@ -107,7 +93,7 @@ extension UIViewController: UIViewControllerStateble {
         }
     }
     
-    public func onState(_ state: StateType) {
+    open func onState(_ state: StateType) {
         if self.stateView.alpha == 0 {
             self.stateView.isHidden = false
         }
@@ -292,7 +278,6 @@ extension UIViewController {
             actionButton.addTarget(self, action: #selector(actionButtonAction), for: .touchUpInside)
             
             addSubview(horizontalStackView)
-//            horizontalStackView.addArrangedSubview(hActivityIndicatorView)
             horizontalStackView.addArrangedSubview(verticalStackView)
             
             verticalStackView.addArrangedSubview(imageView)
@@ -306,9 +291,6 @@ extension UIViewController {
                 $0.centerX.equalToSuperview()
                 $0.width.lessThanOrEqualTo(UIScreen.main.bounds.width - 40)
             }
-//            imageView.snp.makeConstraints { make in
-//                make.width.greaterThanOrEqualTo(UIScreen.main.bounds.width - 40)
-//            }
             
             backgroundColor = .white
             
