@@ -311,7 +311,7 @@ extension UIViewController {
             model.action?()
         }
         
-        @objc open func onUpdate(_ model: StateType) {
+        open func onUpdate(_ model: StateType) {
             self.model = model
             imageView.stopAnimatingGif()
             if let image = model.image, image.imageData != nil {
