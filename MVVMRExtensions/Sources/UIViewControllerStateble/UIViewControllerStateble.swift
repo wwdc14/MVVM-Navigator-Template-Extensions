@@ -93,7 +93,7 @@ extension UIViewController: UIViewControllerStateble {
         }
     }
     
-    @objc open func onState(_ state: StateType) {
+    open func onState(_ state: StateType) {
         if self.stateView.alpha == 0 {
             self.stateView.isHidden = false
         }
