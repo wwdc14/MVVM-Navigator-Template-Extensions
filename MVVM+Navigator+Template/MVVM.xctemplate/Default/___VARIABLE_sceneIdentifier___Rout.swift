@@ -2,7 +2,7 @@
 
 import MVVMRExtensions
 
-struct ___VARIABLE_sceneIdentifier___Rout: RoutType {
+struct ___VARIABLE_sceneIdentifier___Rout {
     
     
     
