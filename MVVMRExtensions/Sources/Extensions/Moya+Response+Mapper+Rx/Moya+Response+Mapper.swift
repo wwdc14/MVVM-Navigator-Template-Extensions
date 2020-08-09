@@ -2,9 +2,13 @@ import Moya
 import SwiftyJSON
 import Foundation
 
-public enum MapperError: Swift.Error {
+public enum MapperError: Swift.Error, LocalizedError {
     case status(String)
-    
+    public var errorDescription: String? {
+        switch self {
+        case .status(let s): return s
+        }
+    }
 }
 
 public extension Response {

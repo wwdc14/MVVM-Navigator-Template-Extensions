@@ -11,10 +11,10 @@ struct ___VARIABLE_sceneIdentifier___Rout {
 extension ___VARIABLE_sceneIdentifier___Rout: RoutType {
     static var registerPattern: String {
         
-        return <#Return your register Pattern#>.lowercased()
+        return "<#Scheme#>://___VARIABLE_sceneIdentifier___".lowercased()
     }
     
-    var scheme: String { <#scheme#> }
+    var scheme: String { <#Scheme#>.lowercased() }
     
-    var host: String { "___VARIABLE_sceneIdentifier___" }
+    var host: String { "___VARIABLE_sceneIdentifier___".lowercased() }
 }
