@@ -22,22 +22,22 @@ extension MBProgressHUD {
     
     public struct HUDStyle {
         
-        struct ViewStyle {
+        public struct ViewStyle {
             var style: MBProgressHUDBackgroundStyle = .solidColor
             var blurEffectStyle: UIBlurEffect.Style = .dark
             var color: UIColor = UIColor(white: 0, alpha: 0.2)
         }
         
-        let labelTextColor: UIColor
-        let labelFont: UIFont?
-        let labelAlignment: NSTextAlignment
-        let mode: MBProgressHUDMode
-        var animationType: MBProgressHUDAnimation = .zoom
-        var offset: CGPoint = .zero
-        var backgroundViewStyle: ViewStyle = .init()
-        var bezelViewStyle: ViewStyle = .init(style: .blur, blurEffectStyle: .dark, color: .clear)
+        public let labelTextColor: UIColor
+        public let labelFont: UIFont?
+        public let labelAlignment: NSTextAlignment
+        public let mode: MBProgressHUDMode
+        public var animationType: MBProgressHUDAnimation = .zoom
+        public var offset: CGPoint = .zero
+        public var backgroundViewStyle: ViewStyle = .init()
+        public var bezelViewStyle: ViewStyle = .init(style: .blur, blurEffectStyle: .dark, color: .clear)
         
-        var activityIndicatorColor: UIColor {
+        public var activityIndicatorColor: UIColor {
             if bezelViewStyle.blurEffectStyle == .dark {
                 return .white
             } else {
