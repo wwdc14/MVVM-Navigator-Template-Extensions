@@ -2,15 +2,6 @@ import MBProgressHUD
 
 extension MBProgressHUD {
     
-    private var _window: UIWindow? {
-        if let window = window {
-            return window
-        } else if let window = UIApplication.shared.windows.first {
-            return window
-        }
-        return nil
-    }
-    
     var activityIndicatorColor: UIColor? {
         set {
             UIActivityIndicatorView.appearance(whenContainedInInstancesOf: [MBProgressHUD.self]).color = newValue
@@ -36,6 +27,7 @@ extension MBProgressHUD {
         public var offset: CGPoint = .zero
         public var backgroundViewStyle: ViewStyle = .init()
         public var bezelViewStyle: ViewStyle = .init(style: .blur, blurEffectStyle: .dark, color: .clear)
+        public var customView: UIView?
         
         public var activityIndicatorColor: UIColor {
             if bezelViewStyle.blurEffectStyle == .dark {
@@ -90,7 +82,7 @@ extension MBProgressHUD {
     ///   - message: 显示hud的message ==> string
     ///   - state: hud的状态
     open func show(_ message: String,
-                   state: MBProgressHUD.State) { show(message, state: state, styleClosure: nil) }
+                   state: MBProgressHUD.State) { show(message, state: state) }
     
     
     /// 显示hud
@@ -100,7 +92,7 @@ extension MBProgressHUD {
     ///   - styleClosure: 自定义hud的样式
     open func show(_ message: String,
                    state: MBProgressHUD.State,
-                   styleClosure: ((HUDStyle) -> HUDStyle)? = nil) {
+                   styleClosure: ((HUDStyle) -> HUDStyle)? = MVVMRExtensions.mbpStyle.defaultStyle) {
         
         __set(state: state, styleClosure: styleClosure)
         __sethide(state: state)
@@ -115,7 +107,7 @@ extension MBProgressHUD {
     ///   - message: 显示hud的message ==> NSAttributedString
     ///   - state: hud的状态
     open func show(_ message: NSAttributedString,
-                   state: MBProgressHUD.State) { show(message, state: state, styleClosure: nil) }
+                   state: MBProgressHUD.State) { show(message, state: state) }
     
     /// 显示hud
     /// - Parameters:
@@ -124,7 +116,7 @@ extension MBProgressHUD {
     ///   - styleClosure: 自定义hud的样式
     open func show(_ message: NSAttributedString,
                    state: MBProgressHUD.State,
-                   styleClosure: ((HUDStyle) -> HUDStyle)? = nil) {
+                   styleClosure: ((HUDStyle) -> HUDStyle)? = MVVMRExtensions.mbpStyle.defaultStyle) {
         
         __set(state: state, styleClosure: styleClosure)
         __sethide(state: state)
@@ -133,7 +125,7 @@ extension MBProgressHUD {
         
     }
     
-    private func __set(state: MBProgressHUD.State, styleClosure: ((HUDStyle) -> HUDStyle)? = nil) {
+    private func __set(state: MBProgressHUD.State, styleClosure: ((HUDStyle) -> HUDStyle)? = MVVMRExtensions.mbpStyle.defaultStyle) {
         mode = .customView
         
         let hudStyle = state.map(styleClosure)
