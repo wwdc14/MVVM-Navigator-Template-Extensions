@@ -19,9 +19,9 @@ extension MBProgressHUD {
             var color: UIColor = UIColor(white: 0, alpha: 0.2)
         }
         
-        public let labelTextColor: UIColor
-        public let labelFont: UIFont?
-        public let labelAlignment: NSTextAlignment
+        public var labelTextColor: UIColor
+        public var labelFont: UIFont?
+        public var labelAlignment: NSTextAlignment
         public let mode: MBProgressHUDMode
         public var animationType: MBProgressHUDAnimation = .zoom
         public var offset: CGPoint = .zero
