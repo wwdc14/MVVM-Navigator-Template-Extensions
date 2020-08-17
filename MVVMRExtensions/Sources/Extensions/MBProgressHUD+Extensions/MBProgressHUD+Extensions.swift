@@ -75,14 +75,6 @@ extension MBProgressHUD {
         areDefaultMotionEffectsEnabled = true
         removeFromSuperViewOnHide = true
     }
-
-    
-    /// 显示hud
-    /// - Parameters:
-    ///   - message: 显示hud的message ==> string
-    ///   - state: hud的状态
-    open func show(_ message: String,
-                   state: MBProgressHUD.State) { show(message, state: state) }
     
     
     /// 显示hud
@@ -100,14 +92,6 @@ extension MBProgressHUD {
         label.text = message
         
     }
-    
-    
-    /// 显示hud
-    /// - Parameters:
-    ///   - message: 显示hud的message ==> NSAttributedString
-    ///   - state: hud的状态
-    open func show(_ message: NSAttributedString,
-                   state: MBProgressHUD.State) { show(message, state: state) }
     
     /// 显示hud
     /// - Parameters:
