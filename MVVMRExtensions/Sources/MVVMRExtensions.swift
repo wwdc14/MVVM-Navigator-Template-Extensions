@@ -4,7 +4,7 @@ import MBProgressHUD
 public struct MVVMRExtensions {
     
     public static var navigation = Navigation.self
-    public static var mbpStyle = Navigation.self
+    public static var mbpStyle = MBPStyle.self
     
     public static func works() {
         UIViewController.work()
