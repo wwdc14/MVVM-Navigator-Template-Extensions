@@ -15,7 +15,6 @@
 		041AF76924A89A9900D15852 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 041AF76824A89A9900D15852 /* SwiftyJSON */; };
 		041AF76C24A89C7800D15852 /* URLNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = 041AF76B24A89C7800D15852 /* URLNavigator */; };
 		041AF76E24A89C7800D15852 /* URLMatcher in Frameworks */ = {isa = PBXBuildFile; productRef = 041AF76D24A89C7800D15852 /* URLMatcher */; };
-		041AF77124A89CD900D15852 /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = 041AF77024A89CD900D15852 /* SwiftyGif */; };
 		041AF77924A89EC000D15852 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 041AF77824A89EC000D15852 /* RxSwift */; };
 		041AF77B24A89EC000D15852 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 041AF77A24A89EC000D15852 /* RxRelay */; };
 		041AF77D24A89EC000D15852 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 041AF77C24A89EC000D15852 /* RxCocoa */; };
@@ -127,7 +126,6 @@
 				041AF76324A876AB00D15852 /* MBProgressHUD in Frameworks */,
 				041AF75B24A8759500D15852 /* Moya in Frameworks */,
 				041AF76624A8956000D15852 /* Kingfisher in Frameworks */,
-				041AF77124A89CD900D15852 /* SwiftyGif in Frameworks */,
 				041AF77B24A89EC000D15852 /* RxRelay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,7 +367,6 @@
 				041AF76824A89A9900D15852 /* SwiftyJSON */,
 				041AF76B24A89C7800D15852 /* URLNavigator */,
 				041AF76D24A89C7800D15852 /* URLMatcher */,
-				041AF77024A89CD900D15852 /* SwiftyGif */,
 				041AF77824A89EC000D15852 /* RxSwift */,
 				041AF77A24A89EC000D15852 /* RxRelay */,
 				041AF77C24A89EC000D15852 /* RxCocoa */,
@@ -413,7 +410,6 @@
 				041AF76424A8956000D15852 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				041AF76724A89A9900D15852 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				041AF76A24A89C7800D15852 /* XCRemoteSwiftPackageReference "URLNavigator" */,
-				041AF76F24A89CD900D15852 /* XCRemoteSwiftPackageReference "SwiftyGif" */,
 				041AF77724A89EC000D15852 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 04E09E5C24A4F0320038AEAB /* Products */;
@@ -798,14 +794,6 @@
 				minimumVersion = 2.3.0;
 			};
 		};
-		041AF76F24A89CD900D15852 /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://gitee.com/WWDC14/SwiftyGif";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.3.0;
-			};
-		};
 		041AF77724A89EC000D15852 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
@@ -856,11 +844,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 041AF76A24A89C7800D15852 /* XCRemoteSwiftPackageReference "URLNavigator" */;
 			productName = URLMatcher;
-		};
-		041AF77024A89CD900D15852 /* SwiftyGif */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 041AF76F24A89CD900D15852 /* XCRemoteSwiftPackageReference "SwiftyGif" */;
-			productName = SwiftyGif;
 		};
 		041AF77824A89EC000D15852 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;

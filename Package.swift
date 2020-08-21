@@ -18,8 +18,7 @@ let package = Package(
         .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "5.14.0")),
         .package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git", .upToNextMajor(from: "5.0.0")),
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "5.1.1")),
-        .package(url: "https://github.com/devxoul/URLNavigator.git", .upToNextMajor(from: "2.3.0")),
-        .package(url: "https://gitee.com/WWDC14/SwiftyGif", .upToNextMajor(from: "5.3.0"))
+        .package(url: "https://github.com/devxoul/URLNavigator.git", .upToNextMajor(from: "2.3.0"))
     ],
     targets: [
         .target(

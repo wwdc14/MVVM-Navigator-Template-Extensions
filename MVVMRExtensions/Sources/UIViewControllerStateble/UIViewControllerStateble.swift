@@ -1,5 +1,4 @@
 import SnapKit
-import SwiftyGif
 import UIKit.UIView
 import UIKit.UIViewController
 import UIKit.UIActivityIndicatorView
@@ -313,17 +312,7 @@ extension UIViewController {
         
         open func onUpdate(_ model: StateType) {
             self.model = model
-            imageView.stopAnimatingGif()
-            if let image = model.image, image.imageData != nil {
-                imageView.setGifImage(image, manager: .defaultManager, loopCount: -1)
-                imageView.startAnimatingGif()
-            } else if let image = model.image {
-                imageView.gifImage = nil
-                imageView.image = image
-            } else {
-                imageView.image = nil
-                imageView.gifImage = nil
-            }
+            imageView.image = model.image
             titleLabel.text = model.title
             descriptionLabel.text = model.description
             actionButton.setTitle(model.actionTitle, for: UIControl.State())
