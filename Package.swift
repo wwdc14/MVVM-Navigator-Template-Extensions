@@ -30,7 +30,6 @@ let package = Package(
                 Target.Dependency.byName(name: "RxSwift"),
                 Target.Dependency.byName(name: "SnapKit"),
                 Target.Dependency.byName(name: "URLNavigator"),
-                Target.Dependency.byName(name: "SwiftyGif"),
                 Target.Dependency.product(name: "URLMatcher", package: "URLNavigator"),
                 Target.Dependency.product(name: "RxMoya", package: "Moya"),
                 Target.Dependency.product(name: "RxCocoa", package: "RxSwift")
