@@ -12,7 +12,6 @@ class ___VARIABLE_sceneIdentifier___ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        input.viewDidLoad.onNext(())
     }
     
     override func bindViewModel() {
@@ -22,6 +21,7 @@ class ___VARIABLE_sceneIdentifier___ViewController: UIViewController {
         
         /// `binds`
         output.state.drive(rx.state).disposed(by: disposeBag)
+        output.loading.bind(to: rx.loading).disposed(by: disposeBag)
         
     }
     

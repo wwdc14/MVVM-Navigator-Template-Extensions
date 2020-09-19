@@ -13,7 +13,7 @@ open class FixInteractiveNavigationController: UINavigationController, UIGesture
                 return false
             }
         }
-        return visibleViewController?.canGoback ?? true
+        return visibleViewController?.navigationShouldPopOnBackButton ?? true
     }
     
 }

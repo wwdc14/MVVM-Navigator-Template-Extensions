@@ -6,7 +6,7 @@ public protocol UIViewControllerCustomBackItemble {
     
     var disposeBag: DisposeBag { get }
     var customBackButton: UIButton { get }
-    var canGoback: Bool { get }
+    var navigationShouldPopOnBackButton: Bool { get }
     
     func backToPrevious()
     
@@ -46,12 +46,12 @@ extension UIViewController: UIViewControllerCustomBackItemble {
     }
     
     @objc open func backToPrevious() {
-        if let navigationController = self.navigationController, canGoback {
+        if let navigationController = self.navigationController, navigationShouldPopOnBackButton {
             navigationController.popViewController(animated: true)
         }
     }
     
-    @objc open var canGoback: Bool {
+    @objc open var navigationShouldPopOnBackButton: Bool {
         return true
     }
     
