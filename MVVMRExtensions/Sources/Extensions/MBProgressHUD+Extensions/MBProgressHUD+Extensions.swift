@@ -19,6 +19,7 @@ extension MBProgressHUD {
             var color: UIColor = UIColor(white: 0, alpha: 0.2)
         }
         
+        public let state: State
         public var labelTextColor: UIColor
         public var labelFont: UIFont?
         public var labelAlignment: NSTextAlignment
@@ -121,7 +122,7 @@ extension MBProgressHUD {
         backgroundView.blurEffectStyle = hudStyle.backgroundViewStyle.blurEffectStyle
         backgroundView.style = hudStyle.backgroundViewStyle.style
         backgroundView.color = hudStyle.backgroundViewStyle.color
-
+        
         activityIndicatorColor = hudStyle.activityIndicatorColor
         
         animationType = hudStyle.animationType
@@ -146,33 +147,38 @@ extension MBProgressHUD {
 }
 
 extension MBProgressHUD.HUDStyle {
-    static let error = MBProgressHUD.HUDStyle(labelTextColor: _UIColor(255,124,124),
+    static let error = MBProgressHUD.HUDStyle(state: .error,
+                                              labelTextColor: _UIColor(255,124,124),
                                               labelFont: .systemFont(ofSize: 15, weight: .semibold),
                                               labelAlignment:.center,
                                               mode: .text)
     
-    static let success = MBProgressHUD.HUDStyle(labelTextColor: _UIColor(126,211,33),
-                                              labelFont: .systemFont(ofSize: 15, weight: .regular),
-                                              labelAlignment: .center,
-                                              mode: .text)
+    static let success = MBProgressHUD.HUDStyle(state: .success,
+                                                labelTextColor: _UIColor(126,211,33),
+                                                labelFont: .systemFont(ofSize: 15, weight: .regular),
+                                                labelAlignment: .center,
+                                                mode: .text)
     
-    static let toast = MBProgressHUD.HUDStyle(labelTextColor: _UIColor(253,253,253),
+    static let toast = MBProgressHUD.HUDStyle(state: .toast,
+                                              labelTextColor: _UIColor(253,253,253),
                                               labelFont: .systemFont(ofSize: 15, weight: .regular),
                                               labelAlignment: .center,
                                               mode: .text,
                                               offset: CGPoint(x: 0, y: MBProgressMaxOffset))
     
-    static let warning = MBProgressHUD.HUDStyle(labelTextColor: _UIColor(255,179,50),
+    static let warning = MBProgressHUD.HUDStyle(state: .warning,
                                                 labelFont: .systemFont(ofSize: 15, weight: .medium),
                                                 labelAlignment: .center,
                                                 mode: .text)
     
-    static let wait = MBProgressHUD.HUDStyle(labelTextColor: _UIColor(253,253,253),
+    static let wait = MBProgressHUD.HUDStyle(state: .wait,
+                                             labelTextColor: _UIColor(253,253,253),
                                              labelFont: .systemFont(ofSize: 15, weight: .regular),
                                              labelAlignment: .center,
                                              mode: .indeterminate)
     
-    static let progress = MBProgressHUD.HUDStyle(labelTextColor: _UIColor(253,253,253),
+    static let progress = MBProgressHUD.HUDStyle(state: .progress,
+                                                 labelTextColor: _UIColor(253,253,253),
                                                  labelFont: .systemFont(ofSize: 15, weight: .regular),
                                                  labelAlignment: .center,
                                                  mode: .annularDeterminate)
