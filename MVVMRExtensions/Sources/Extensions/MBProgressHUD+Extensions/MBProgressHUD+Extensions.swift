@@ -135,6 +135,7 @@ extension MBProgressHUD {
         label.textAlignment = hudStyle.labelAlignment
         label.shadowColor = .black
         label.shadowOffset = CGSize(width: 1, height: 1)
+        customView = hudStyle.customView
         
     }
     
