@@ -167,6 +167,7 @@ extension MBProgressHUD.HUDStyle {
                                               offset: CGPoint(x: 0, y: MBProgressMaxOffset))
     
     static let warning = MBProgressHUD.HUDStyle(state: .warning,
+                                                labelTextColor: _UIColor(255,179,50),
                                                 labelFont: .systemFont(ofSize: 15, weight: .medium),
                                                 labelAlignment: .center,
                                                 mode: .text)
