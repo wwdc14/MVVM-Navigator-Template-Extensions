@@ -116,6 +116,7 @@ extension MBProgressHUD {
         
         mode = hudStyle.mode
         customView = hudStyle.customView
+        contentColor = hudStyle.contentColor
         
         bezelView.blurEffectStyle = hudStyle.bezelViewStyle.blurEffectStyle
         bezelView.style = hudStyle.bezelViewStyle.style
@@ -134,16 +135,12 @@ extension MBProgressHUD {
         label.textColor = color
         label.font = hudStyle.labelFont
         label.textAlignment = hudStyle.labelAlignment
-        label.shadowColor = .black
-        label.shadowOffset = CGSize(width: 1, height: 1)
-        
-        contentColor = hudStyle.contentColor
     }
     
     private func __sethide(state: MBProgressHUD.State) {
         show(animated: true)
         if state != .wait && state != .progress {
-            hide(animated: true, afterDelay: 2)
+            hide(animated: true, afterDelay: MVVMRExtensions.MBPConfiguration.hideDelay)
         }
     }
 }
