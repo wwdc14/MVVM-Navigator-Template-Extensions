@@ -190,7 +190,6 @@
 				04E09EA624A4F1790038AEAB /* MVVMRExtensions.swift */,
 				04E09E8E24A4F1790038AEAB /* StoryboardInstantiable */,
 				04E09E9024A4F1790038AEAB /* FixInteractiveNavigationController */,
-				04E09E9224A4F1790038AEAB /* UIViewControllerStateble */,
 				04E09E9424A4F1790038AEAB /* Extensions */,
 				04E09EA724A4F1790038AEAB /* MVVMProtocol */,
 			);
@@ -211,13 +210,6 @@
 				04E09E9124A4F1790038AEAB /* FixInteractiveNavigationController.swift */,
 			);
 			path = FixInteractiveNavigationController;
-			sourceTree = "<group>";
-		};
-		04E09E9224A4F1790038AEAB /* UIViewControllerStateble */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UIViewControllerStateble;
 			sourceTree = "<group>";
 		};
 		04E09E9424A4F1790038AEAB /* Extensions */ = {
