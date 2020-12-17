@@ -20,7 +20,6 @@ class ___VARIABLE_sceneIdentifier___ViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         /// `binds`
-        output.state.drive(rx.state).disposed(by: disposeBag)
         output.loading.bind(to: rx.loading).disposed(by: disposeBag)
         
     }

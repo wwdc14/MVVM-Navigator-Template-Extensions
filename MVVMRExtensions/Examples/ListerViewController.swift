@@ -27,7 +27,6 @@ class ListerViewController: UIViewController, StoryboardInstantiable {
         let output = viewModel <<< input
         
         /// `binds`
-        output.state.drive(rx.state).disposed(by: disposeBag)
         
     }
     

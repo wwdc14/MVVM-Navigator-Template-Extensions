@@ -14,19 +14,20 @@ extension ___VARIABLE_sceneIdentifier___ViewModel {
     
     // MARK: - OUTPUT
     struct Output {
-        //let route: Driver<RoutType>
-        let state: Driver<StateType>
-        let loading: Observable<LoadingContext>
+        let loading: Observable<HUD>
     }
 }
 
 class ___VARIABLE_sceneIdentifier___ViewModel: ViewModelType {
     
-    typealias LoadingContext = (isLoading: Bool, error: Error?)
+    struct HUD {
+        let isLoading: Bool
+        var text: String = ""
+        var error: Error? = nil
+    }
     
     let disposeBag: DisposeBag
-    fileprivate let _state = PublishSubject<StateType>()
-    fileprivate let _loading = PublishSubject<LoadingContext>()
+    fileprivate let _loading = PublishSubject<HUD>()
     
     init(_ disposeBag: DisposeBag) {
         self.disposeBag = disposeBag
@@ -34,7 +35,7 @@ class ___VARIABLE_sceneIdentifier___ViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         
-        return Output(state: _state.asDriver(onErrorJustReturn: UIViewController.StateModel.none), loading: _loading)
+        return Output(loading: _loading)
     }
  }
 

@@ -33,7 +33,6 @@
 		04E09E6024A4F0320038AEAB /* MVVMRExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 04E09E5E24A4F0320038AEAB /* MVVMRExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04E09EA924A4F1790038AEAB /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E09E8F24A4F1790038AEAB /* StoryboardInstantiable.swift */; };
 		04E09EAA24A4F1790038AEAB /* FixInteractiveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E09E9124A4F1790038AEAB /* FixInteractiveNavigationController.swift */; };
-		04E09EAB24A4F1790038AEAB /* UIViewControllerStateble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E09E9324A4F1790038AEAB /* UIViewControllerStateble.swift */; };
 		04E09EAC24A4F1790038AEAB /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E09E9624A4F1790038AEAB /* UIViewController+Extensions.swift */; };
 		04E09EAD24A4F1790038AEAB /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E09E9824A4F1790038AEAB /* UIFont+Extensions.swift */; };
 		04E09EAE24A4F1790038AEAB /* ResponseMapper+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E09E9A24A4F1790038AEAB /* ResponseMapper+Rx.swift */; };
@@ -88,7 +87,6 @@
 		04E09E5F24A4F0320038AEAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04E09E8F24A4F1790038AEAB /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		04E09E9124A4F1790038AEAB /* FixInteractiveNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixInteractiveNavigationController.swift; sourceTree = "<group>"; };
-		04E09E9324A4F1790038AEAB /* UIViewControllerStateble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerStateble.swift; sourceTree = "<group>"; };
 		04E09E9624A4F1790038AEAB /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		04E09E9824A4F1790038AEAB /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		04E09E9A24A4F1790038AEAB /* ResponseMapper+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ResponseMapper+Rx.swift"; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 		04E09E9224A4F1790038AEAB /* UIViewControllerStateble */ = {
 			isa = PBXGroup;
 			children = (
-				04E09E9324A4F1790038AEAB /* UIViewControllerStateble.swift */,
 			);
 			path = UIViewControllerStateble;
 			sourceTree = "<group>";
@@ -462,7 +459,6 @@
 			files = (
 				04E09EAC24A4F1790038AEAB /* UIViewController+Extensions.swift in Sources */,
 				04E09EB424A4F1790038AEAB /* URLNavigator+Extensions.swift in Sources */,
-				04E09EAB24A4F1790038AEAB /* UIViewControllerStateble.swift in Sources */,
 				04E09EAA24A4F1790038AEAB /* FixInteractiveNavigationController.swift in Sources */,
 				04E09EB224A4F1790038AEAB /* MBProgressHUD+Extensions.swift in Sources */,
 				04E09EAD24A4F1790038AEAB /* UIFont+Extensions.swift in Sources */,

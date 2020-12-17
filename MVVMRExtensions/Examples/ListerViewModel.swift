@@ -28,14 +28,12 @@ extension ListerViewModel {
     // MARK: - OUTPUT
     struct Output {
         //let route: Driver<RoutType>
-        let state: Driver<StateType>
     }
 }
 
 class ListerViewModel: ViewModelType {
      
     let disposeBag: DisposeBag
-    fileprivate let _state = PublishSubject<StateType>()
      
     init(_ disposeBag: DisposeBag) {
         self.disposeBag = disposeBag
@@ -43,14 +41,8 @@ class ListerViewModel: ViewModelType {
      
     func transform(input: Input) -> Output {
         
-        input.viewDidLoad.subscribe { _ in
-            let state = UIViewController.StateModel.loading("载入中...", description: "请稍后...")
-            state.image = UIImage(named: "star_wars")
-            self._state.onNext(state)
-        }.disposed(by: disposeBag)
         
-        
-        return Output(state: _state.asDriver(onErrorJustReturn: UIViewController.StateModel.none))
+        return Output()
     }
  }
 
